@@ -47,9 +47,20 @@ function loadState() {
     if (saved) {
         try {
             state = JSON.parse(saved);
+
+            // データマイグレーション: historyListがない場合は追加
+            if (!state.historyList) {
+                state.historyList = [];
+                // 既存のhistoryがあればリストに追加
+                if (state.history) {
+                    state.historyList.push(state.history);
+                }
+                saveState(); // マイグレーション後に保存
+                console.log('✅ データをマイグレーションしました');
+            }
         } catch (e) {
             console.error('Failed to parse saved state:', e);
-            state = { done: [], history: null };
+            state = { done: [], history: null, historyList: [] };
         }
     }
 }
