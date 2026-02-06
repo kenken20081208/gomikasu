@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゴミ回収アプリ - デモ</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- ヘッダー: 進捗表示 -->
+        <header class="header">
+            <h1>ゴミ回収管理</h1>
+            <div class="progress" id="progress">
+                <span id="progressText">0/0</span>
+            </div>
+        </header>
+
+        <!-- 完了バナー（完了時のみ表示） -->
+        <div class="completion-banner hidden" id="completionBanner">
+            完了しました！
+        </div>
+
+        <!-- 地図セクション -->
+        <section class="map-section">
+            <h2>🗺️ 回収マップ</h2>
+            <div id="map" class="map-container"></div>
+            <div class="map-legend">
+                <div class="legend-item">
+                    <span class="legend-dot pending"></span>
+                    <span>未回収</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot done"></span>
+                    <span>回収済み</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 今日の回収リスト -->
+        <main class="main">
+            <h2>📋 今日の回収リスト</h2>
+            <div id="stopsList" class="stops-list">
+                <!-- JavaScriptで動的に生成 -->
+            </div>
+        </main>
+
+        <!-- 履歴表示 -->
+        <section class="history-section">
+            <h3>📊 履歴（デモ）</h3>
+            <div id="historyDisplay" class="history-display">
+                まだ完了していません
+            </div>
+        </section>
+
+        <!-- リセットボタン -->
+        <footer class="footer">
+            <button class="reset-btn" id="resetBtn">🔄 リセット</button>
+        </footer>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/gomisine.js"></script>
+</body>
+
+</html>
